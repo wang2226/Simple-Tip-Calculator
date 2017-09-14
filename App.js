@@ -4,7 +4,7 @@ import { AppRegistry, Text, TextInput, View, Number, StyleSheet, Slider } from '
 export default class TipCalculator extends Component {
   constructor(props) {
     super(props);
-    this.state = {bill: '', percentage: '20', numP: '1'};
+    this.state = {bill: '', percentage: 20, numP: 1};
   }
 
   render() {
@@ -34,6 +34,7 @@ export default class TipCalculator extends Component {
           step={1}
           minimumValue={5}
           maximumValue={30}
+          value={this.state.percentage}
           onValueChange={percentage => this.setState({percentage: percentage})}
         />
 
@@ -56,8 +57,10 @@ export default class TipCalculator extends Component {
         <Text>{"\n"}</Text>
 
         <Text style={styles.title}>
-          Tip: $ {this.state.bill * this.state.percentage / 100 / this.state.numP}
+          Tip: $ {(this.state.bill * this.state.percentage / 100 / this.state.numP).toFixed(2)}
         </Text>
+
+        <Text>{"\n"}</Text>
 
       </View>
     );
